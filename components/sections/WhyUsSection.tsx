@@ -146,7 +146,7 @@ export default function WhyUsSection() {
             </div>
             <div>
               <h3 className="text-lg font-bold mb-1">
-                Trusted by 500+ professionals
+                Trusted by 10,000+ professionals
               </h3>
               <p className="text-gray-700 text-sm">
                 Join hundreds of professionals who have successfully landed

@@ -51,7 +51,7 @@ export default function HeroSection() {
             variants={itemVariants}
           >
             <div className="inline-block px-3 py-1 sm:px-4 sm:py-1 bg-blue-50 rounded-full text-[#004aad] font-medium text-xs sm:text-sm mb-3 sm:mb-4">
-              Trusted by 1000+ professionals
+              Trusted by 10,000+ professionals
             </div>
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-3 sm:mb-4 md:mb-6 leading-tight">
               Ace Your Next{" "}
