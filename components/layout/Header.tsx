@@ -1,11 +1,35 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, MouseEvent } from "react";
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { Menu, X } from "lucide-react";
+
 export default function Header() {
+  const scrollToSection = (
+    e: MouseEvent<HTMLAnchorElement> | MouseEvent<HTMLButtonElement>,
+    id: string
+  ) => {
+    e.preventDefault();
+    setMobileMenuOpen(false);
+
+    const element = document.getElementById(id);
+    if (!element) return;
+
+    const header = document.querySelector("header");
+    const headerHeight = header ? header.offsetHeight : 0;
+    const elementPosition = element.getBoundingClientRect().top;
+    const offsetPosition =
+      elementPosition + window.pageYOffset - headerHeight - 16;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: "smooth",
+    });
+  };
   const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,8 +49,8 @@ export default function Header() {
 
   return (
     <motion.header
-      className={`fixed top-0 left-0 right-0 z-50 py-4 px-6 transition-all duration-200 ${
-        isScrolled ? "bg-white shadow-md" : "bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 py-2 sm:py-3 md:py-4 px-3 sm:px-4 md:px-6 transition-all duration-200 ${
+        isScrolled || mobileMenuOpen ? "bg-white shadow-md" : "bg-transparent"
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
@@ -37,35 +61,100 @@ export default function Header() {
           <Image
             src="/EdzeetaLogo.svg"
             alt="Edzeeta Logo"
-            width={140}
-            height={40}
+            width={100}
+            height={30}
+            className="w-24 sm:w-28 md:w-32"
             priority
           />
         </div>
-        <nav className="hidden md:flex space-x-8">
+
+        {/* Mobile menu button */}
+        <button
+          className="md:hidden focus:outline-none"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label="Toggle menu"
+        >
+          {mobileMenuOpen ? (
+            <X size={20} className="text-gray-700" />
+          ) : (
+            <Menu size={20} className="text-gray-700" />
+          )}
+        </button>
+
+        {/* Desktop navigation */}
+        <nav className="hidden md:flex space-x-6 lg:space-x-8">
           <a
             href="#services"
-            className="text-gray-700 hover:text-[#004aad] transition-colors duration-200"
+            onClick={(e) => scrollToSection(e, "services")}
+            className="text-gray-700 hover:text-[#004aad] transition-colors duration-200 font-medium relative group"
           >
             Services
+            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#004aad] transition-all duration-300 group-hover:w-full"></span>
           </a>
           <a
             href="#pricing"
-            className="text-gray-700 hover:text-[#004aad] transition-colors duration-200"
+            onClick={(e) => scrollToSection(e, "pricing")}
+            className="text-gray-700 hover:text-[#004aad] transition-colors duration-200 font-medium relative group"
           >
             Pricing
+            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#004aad] transition-all duration-300 group-hover:w-full"></span>
           </a>
           <a
             href="#contact"
-            className="text-gray-700 hover:text-[#004aad] transition-colors duration-200"
+            onClick={(e) => scrollToSection(e, "contact")}
+            className="text-gray-700 hover:text-[#004aad] transition-colors duration-200 font-medium relative group"
           >
             Contact
+            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#004aad] transition-all duration-300 group-hover:w-full"></span>
           </a>
         </nav>
-        <Button className="bg-[#004aad] hover:bg-[#003a87] text-white">
-          Contact Us
-        </Button>
+        <div className="hidden md:block">
+          <Button
+            className="bg-[#004aad] hover:bg-[#003a87] text-white text-sm px-4 py-2"
+            onClick={(e) => scrollToSection(e, "contact")}
+          >
+            Contact Us
+          </Button>
+        </div>
       </div>
+
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <div className="md:hidden py-3 px-3 mt-2 bg-white border-t border-gray-100">
+          <nav className="flex flex-col space-y-3">
+            <a
+              href="#services"
+              onClick={(e) => scrollToSection(e, "services")}
+              className="text-gray-700 hover:text-[#004aad] py-2 border-b border-gray-100 text-sm font-medium flex items-center justify-between"
+            >
+              Services
+              <span className="text-[#004aad] text-xs">→</span>
+            </a>
+            <a
+              href="#pricing"
+              onClick={(e) => scrollToSection(e, "pricing")}
+              className="text-gray-700 hover:text-[#004aad] py-2 border-b border-gray-100 text-sm font-medium flex items-center justify-between"
+            >
+              Pricing
+              <span className="text-[#004aad] text-xs">→</span>
+            </a>
+            <a
+              href="#contact"
+              onClick={(e) => scrollToSection(e, "contact")}
+              className="text-gray-700 hover:text-[#004aad] py-2 border-b border-gray-100 text-sm font-medium flex items-center justify-between"
+            >
+              Contact
+              <span className="text-[#004aad] text-xs">→</span>
+            </a>
+            <Button
+              className="bg-[#004aad] hover:bg-[#003a87] text-white w-full text-sm py-1.5 mt-2"
+              onClick={(e) => scrollToSection(e, "contact")}
+            >
+              Contact Us
+            </Button>
+          </nav>
+        </div>
+      )}
     </motion.header>
   );
 }

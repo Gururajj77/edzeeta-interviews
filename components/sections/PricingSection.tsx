@@ -68,7 +68,11 @@ export default function PricingSection() {
           included: true,
           highlight: true,
         },
-        { text: "LinkedIn profile optimization", included: false },
+        {
+          text: "LinkedIn profile optimization",
+          included: true,
+          highlight: true,
+        },
       ],
     },
     {
@@ -79,7 +83,7 @@ export default function PricingSection() {
       buttonId: "checkout-premium",
       popular: false,
       features: [
-        { text: "1 mock interview session (60 min)", included: true },
+        { text: "2 mock interview session (60 min)", included: true },
         { text: "Industry-specific questions", included: true },
         { text: "Detailed assessment report", included: true },
         { text: "Growth areas document", included: true },
@@ -87,7 +91,6 @@ export default function PricingSection() {
         {
           text: "LinkedIn profile optimization",
           included: true,
-          highlight: true,
         },
       ],
     },

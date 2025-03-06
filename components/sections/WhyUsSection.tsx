@@ -40,7 +40,7 @@ export default function WhyUsSection() {
       icon: Users,
       title: "Industry Experts",
       description:
-        "Our interviewers have worked at top companies like IBM, Mindtree, and Wipro",
+        "Our interviewers have worked at top companies like Google, Amazon, and Microsoft",
     },
     {
       icon: Award,
@@ -82,7 +82,7 @@ export default function WhyUsSection() {
 
       <div className="container mx-auto">
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-12"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
@@ -101,7 +101,7 @@ export default function WhyUsSection() {
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -111,17 +111,17 @@ export default function WhyUsSection() {
             <motion.div
               key={index}
               variants={itemVariants}
-              className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100"
+              className="bg-white rounded-xl p-4 shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100"
             >
               <div className="flex items-start">
-                <div className="mr-4 mt-1">
-                  <div className="p-3 bg-blue-50 rounded-lg">
-                    <reason.icon className="w-6 h-6 text-[#004aad]" />
+                <div className="mr-3 mt-1">
+                  <div className="p-2 bg-blue-50 rounded-lg">
+                    <reason.icon className="w-5 h-5 text-[#004aad]" />
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold mb-2">{reason.title}</h3>
-                  <p className="text-gray-600">{reason.description}</p>
+                  <h3 className="text-base font-bold mb-1">{reason.title}</h3>
+                  <p className="text-gray-600 text-sm">{reason.description}</p>
                 </div>
               </div>
             </motion.div>
@@ -129,26 +129,26 @@ export default function WhyUsSection() {
         </motion.div>
 
         <motion.div
-          className="mt-16 p-8 bg-blue-50 rounded-2xl max-w-4xl mx-auto"
+          className="mt-12 p-6 bg-blue-50 rounded-2xl max-w-3xl mx-auto"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="flex flex-col md:flex-row items-center gap-6">
-            <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center flex-shrink-0 shadow-md">
+          <div className="flex flex-col md:flex-row items-center gap-4">
+            <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center flex-shrink-0 shadow-md">
               <Image
                 src="/EdzeetaLogo.svg"
                 alt="Edzeeta Logo"
-                width={60}
-                height={60}
+                width={48}
+                height={48}
               />
             </div>
             <div>
-              <h3 className="text-xl font-bold mb-2">
+              <h3 className="text-lg font-bold mb-1">
                 Trusted by 500+ professionals
               </h3>
-              <p className="text-gray-700">
+              <p className="text-gray-700 text-sm">
                 Join hundreds of professionals who have successfully landed
                 their dream jobs after working with Edzeeta. Our dedicated team
                 of industry experts is committed to your success.
