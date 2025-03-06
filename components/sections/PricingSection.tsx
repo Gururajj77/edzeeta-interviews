@@ -59,7 +59,7 @@ export default function PricingSection() {
       buttonId: "checkout-professional",
       popular: true,
       features: [
-        { text: "1 mock interview session (60 min)", included: true },
+        { text: "1 mock interview session (45 min)", included: true },
         { text: "Industry-specific questions", included: true },
         { text: "Detailed assessment report", included: true },
         { text: "Growth areas document", included: true },
@@ -83,7 +83,7 @@ export default function PricingSection() {
       buttonId: "checkout-premium",
       popular: false,
       features: [
-        { text: "2 mock interview session (60 min)", included: true },
+        { text: "2 mock interview session (45 min each)", included: true },
         { text: "Industry-specific questions", included: true },
         { text: "Detailed assessment report", included: true },
         { text: "Growth areas document", included: true },
