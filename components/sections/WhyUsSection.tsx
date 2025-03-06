@@ -53,9 +53,9 @@ export default function WhyUsSection() {
       icon: Users,
       title: "Industry Experts",
       description:
-        "Our interviewers have worked at top companies like Google, Amazon, and Microsoft",
+        "Our interviewers have worked at top companies like IBM, Tech Mahindra, Wipro, and Infosys",
       details:
-        "All our coaches have 8+ years of experience in their fields and have conducted 100+ real interviews. They know exactly what hiring managers are looking for and will give you insider tips to stand out.",
+        "All our coaches have 4+ years of experience in their fields and have conducted 100+ real interviews. They know exactly what hiring managers are looking for and will give you insider tips to stand out.",
       color: "blue",
     },
     {
