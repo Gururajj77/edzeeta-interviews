@@ -92,6 +92,16 @@ export default function PricingSection() {
           text: "LinkedIn profile optimization",
           included: true,
         },
+        {
+          text: "Job portal access",
+          included: true,
+          highlight: true,
+        },
+        {
+          text: "Access to AI and technical workshops from industry experts",
+          included: true,
+          highlight: true,
+        },
       ],
     },
   ];

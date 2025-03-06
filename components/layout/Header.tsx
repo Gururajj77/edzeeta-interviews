@@ -49,7 +49,7 @@ export default function Header() {
 
   return (
     <motion.header
-      className={`fixed top-0 left-0 right-0 z-50 py-2 sm:py-3 md:py-4 px-3 sm:px-4 md:px-6 transition-all duration-200 ${
+      className={`fixed top-0 left-0 right-0 z-50 py-1 sm:py-1.5 md:py-2 px-3 sm:px-4 md:px-6 transition-all duration-200 ${
         isScrolled || mobileMenuOpen ? "bg-white shadow-md" : "bg-transparent"
       }`}
       initial={{ y: -100 }}
@@ -63,7 +63,7 @@ export default function Header() {
             alt="Edzeeta Logo"
             width={100}
             height={30}
-            className="w-24 sm:w-28 md:w-32"
+            className="w-20 sm:w-24 md:w-28"
             priority
           />
         </div>
@@ -110,7 +110,7 @@ export default function Header() {
         </nav>
         <div className="hidden md:block">
           <Button
-            className="bg-[#004aad] hover:bg-[#003a87] text-white text-sm px-4 py-2"
+            className="bg-[#004aad] hover:bg-[#003a87] text-white text-sm px-4 py-1.5"
             onClick={(e) => scrollToSection(e, "contact")}
           >
             Contact Us
