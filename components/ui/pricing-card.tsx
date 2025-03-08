@@ -39,7 +39,7 @@ export default function PricingCard({
 }: PricingCardProps) {
   return (
     <Card
-      className={`h-full hover:shadow-xl transition-all duration-300 relative backdrop-blur-sm overflow-hidden
+      className={`h-full flex flex-col hover:shadow-xl transition-all duration-300 relative backdrop-blur-sm overflow-hidden
       ${
         popular
           ? "border-2 border-[#004aad] shadow-lg premium-shadow scale-105 z-10"
@@ -73,7 +73,7 @@ export default function PricingCard({
         </div>
       </CardHeader>
 
-      <CardContent className="pb-6">
+      <CardContent className="pb-6 flex-grow">
         <div
           className={`w-full h-px mb-4 ${
             popular ? "bg-blue-100" : "bg-gray-100"
@@ -115,7 +115,7 @@ export default function PricingCard({
         </ul>
       </CardContent>
 
-      <CardFooter className="pb-6">
+      <CardFooter className="pb-6 mt-auto">
         <Button
           id={buttonId}
           className={`w-full py-4 rounded-lg transition-all duration-300 hover:shadow-lg text-sm ${
