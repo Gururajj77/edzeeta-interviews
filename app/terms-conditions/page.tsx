@@ -39,7 +39,7 @@ export default function TermsConditions() {
             governs your interactions with the Site. If you disagree with any
             part of this Agreement or our Privacy Policy, please refrain from
             using our Site. If you have questions or concerns, contact us at
-            support@edzeeta.com. We appreciate your choosing EdZeeta for your
+            hr@edzeeta.com. We appreciate your choosing EdZeeta for your
             educational journey.
           </p>
 

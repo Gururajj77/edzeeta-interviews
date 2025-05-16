@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Send, Mail, Phone, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -21,6 +21,19 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Prevent body scrolling when modal is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isOpen]);
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -98,19 +111,22 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto"
+          className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-start justify-center p-4 overflow-y-auto"
           onClick={onClose}
+          style={{ maxHeight: "100vh" }}
         >
           <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
+            initial={{ scale: 0.9, opacity: 0, y: 20 }}
+            animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.9, opacity: 0 }}
             transition={{ type: "spring", damping: 25 }}
-            className="bg-white rounded-2xl shadow-xl w-full max-w-3xl overflow-hidden"
+            className="bg-white rounded-2xl shadow-xl w-full max-w-3xl overflow-hidden my-8 sm:my-12"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex justify-between items-center p-6 bg-[#004aad]">
-              <h2 className="text-xl font-bold text-white">Contact Us</h2>
+            <div className="flex justify-between items-center p-4 sm:p-6 bg-[#004aad] sticky top-0">
+              <h2 className="text-lg sm:text-xl font-bold text-white">
+                Contact Us
+              </h2>
               <button
                 onClick={onClose}
                 className="text-white hover:bg-white/10 p-2 rounded-full transition-colors"
@@ -120,205 +136,211 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
               </button>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-5 gap-6 p-6">
-              {/* Contact Form - Takes up 3/5 of the space on desktop */}
-              <div className="md:col-span-3">
-                {formSubmitted ? (
-                  <div className="flex flex-col items-center justify-center h-full py-10">
-                    <div className="w-16 h-16 mb-4 rounded-full bg-green-100 flex items-center justify-center">
-                      <Send size={24} className="text-green-600" />
+            <div className="max-h-[80vh] overflow-y-auto">
+              <div className="grid grid-cols-1 md:grid-cols-5 gap-6 p-4 sm:p-6">
+                {/* Contact Form - Takes up 3/5 of the space on desktop */}
+                <div className="md:col-span-3">
+                  {formSubmitted ? (
+                    <div className="flex flex-col items-center justify-center h-full py-10">
+                      <div className="w-16 h-16 mb-4 rounded-full bg-green-100 flex items-center justify-center">
+                        <Send size={24} className="text-green-600" />
+                      </div>
+                      <h3 className="text-xl font-bold text-gray-800 mb-2">
+                        Message Sent!
+                      </h3>
+                      <p className="text-gray-600 text-center">
+                        Thank you for contacting us. We&apos;ll get back to you
+                        shortly.
+                      </p>
                     </div>
-                    <h3 className="text-xl font-bold text-gray-800 mb-2">
-                      Message Sent!
-                    </h3>
-                    <p className="text-gray-600 text-center">
-                      Thank you for contacting us. We&apos;ll get back to you
-                      shortly.
-                    </p>
-                  </div>
-                ) : (
-                  <form onSubmit={handleSubmit} className="space-y-4">
-                    <div>
-                      <label
-                        htmlFor="name"
-                        className="block text-sm font-medium text-gray-700 mb-1"
-                      >
-                        Full Name
-                      </label>
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-[#004aad] focus:border-transparent outline-none"
-                        placeholder="Your full name"
-                        required
-                      />
-                    </div>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  ) : (
+                    <form onSubmit={handleSubmit} className="space-y-4">
                       <div>
                         <label
-                          htmlFor="email"
+                          htmlFor="name"
                           className="block text-sm font-medium text-gray-700 mb-1"
                         >
-                          Email
+                          Full Name
                         </label>
                         <input
-                          type="email"
-                          id="email"
-                          name="email"
-                          value={formData.email}
+                          type="text"
+                          id="name"
+                          name="name"
+                          value={formData.name}
                           onChange={handleChange}
                           className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-[#004aad] focus:border-transparent outline-none"
-                          placeholder="Your email address"
+                          placeholder="Your full name"
                           required
                         />
                       </div>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                          <label
+                            htmlFor="email"
+                            className="block text-sm font-medium text-gray-700 mb-1"
+                          >
+                            Email
+                          </label>
+                          <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-[#004aad] focus:border-transparent outline-none"
+                            placeholder="Your email address"
+                            required
+                          />
+                        </div>
+                        <div>
+                          <label
+                            htmlFor="phone"
+                            className="block text-sm font-medium text-gray-700 mb-1"
+                          >
+                            Phone
+                          </label>
+                          <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            value={formData.phone}
+                            onChange={handleChange}
+                            className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-[#004aad] focus:border-transparent outline-none"
+                            placeholder="Your phone number"
+                          />
+                        </div>
+                      </div>
+
                       <div>
                         <label
-                          htmlFor="phone"
+                          htmlFor="subject"
                           className="block text-sm font-medium text-gray-700 mb-1"
                         >
-                          Phone
+                          Subject
                         </label>
-                        <input
-                          type="tel"
-                          id="phone"
-                          name="phone"
-                          value={formData.phone}
+                        <select
+                          id="subject"
+                          name="subject"
+                          value={formData.subject}
                           onChange={handleChange}
                           className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-[#004aad] focus:border-transparent outline-none"
-                          placeholder="Your phone number"
+                          required
+                        >
+                          <option value="" disabled>
+                            Select a subject
+                          </option>
+                          <option value="Mock Interview">Mock Interview</option>
+                          <option value="Resume Building">
+                            Resume Building
+                          </option>
+                          <option value="Career Counseling">
+                            Career Counseling
+                          </option>
+                          <option value="General Inquiry">
+                            General Inquiry
+                          </option>
+                        </select>
+                      </div>
+
+                      <div>
+                        <label
+                          htmlFor="message"
+                          className="block text-sm font-medium text-gray-700 mb-1"
+                        >
+                          Message
+                        </label>
+                        <textarea
+                          id="message"
+                          name="message"
+                          value={formData.message}
+                          onChange={handleChange}
+                          rows={4}
+                          className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-[#004aad] focus:border-transparent outline-none resize-none"
+                          placeholder="How can we help you?"
+                          required
                         />
+                      </div>
+
+                      <Button
+                        type="submit"
+                        className="w-full bg-[#004aad] hover:bg-[#003a87] text-white py-2.5 rounded-lg text-sm font-medium transition-colors"
+                        disabled={isSubmitting}
+                      >
+                        {isSubmitting ? "Sending..." : "Send Message"}
+                      </Button>
+                    </form>
+                  )}
+                </div>
+
+                {/* Contact Information - Takes up 2/5 of the space on desktop */}
+                <div className="md:col-span-2 bg-gray-50 rounded-xl p-6">
+                  <h3 className="text-lg font-bold text-gray-800 mb-6">
+                    Get in Touch
+                  </h3>
+
+                  <div className="space-y-6">
+                    <div className="flex items-start">
+                      <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mr-4">
+                        <Mail size={18} className="text-[#004aad]" />
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-semibold text-gray-700">
+                          Email
+                        </h4>
+                        <a
+                          href="mailto:hr@edzeeta.com"
+                          className="text-[#004aad] hover:underline text-sm"
+                        >
+                          hr@edzeeta.com
+                        </a>
                       </div>
                     </div>
 
-                    <div>
-                      <label
-                        htmlFor="subject"
-                        className="block text-sm font-medium text-gray-700 mb-1"
-                      >
-                        Subject
-                      </label>
-                      <select
-                        id="subject"
-                        name="subject"
-                        value={formData.subject}
-                        onChange={handleChange}
-                        className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-[#004aad] focus:border-transparent outline-none"
-                        required
-                      >
-                        <option value="" disabled>
-                          Select a subject
-                        </option>
-                        <option value="Mock Interview">Mock Interview</option>
-                        <option value="Resume Building">Resume Building</option>
-                        <option value="Career Counseling">
-                          Career Counseling
-                        </option>
-                        <option value="General Inquiry">General Inquiry</option>
-                      </select>
+                    <div className="flex items-start">
+                      <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mr-4">
+                        <Phone size={18} className="text-[#004aad]" />
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-semibold text-gray-700">
+                          Phone
+                        </h4>
+                        <a
+                          href="tel:+918073418832"
+                          className="text-[#004aad] hover:underline text-sm"
+                        >
+                          +91-8073418832
+                        </a>
+                      </div>
                     </div>
 
-                    <div>
-                      <label
-                        htmlFor="message"
-                        className="block text-sm font-medium text-gray-700 mb-1"
-                      >
-                        Message
-                      </label>
-                      <textarea
-                        id="message"
-                        name="message"
-                        value={formData.message}
-                        onChange={handleChange}
-                        rows={4}
-                        className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-[#004aad] focus:border-transparent outline-none resize-none"
-                        placeholder="How can we help you?"
-                        required
-                      />
-                    </div>
-
-                    <Button
-                      type="submit"
-                      className="w-full bg-[#004aad] hover:bg-[#003a87] text-white py-2.5 rounded-lg text-sm font-medium transition-colors"
-                      disabled={isSubmitting}
-                    >
-                      {isSubmitting ? "Sending..." : "Send Message"}
-                    </Button>
-                  </form>
-                )}
-              </div>
-
-              {/* Contact Information - Takes up 2/5 of the space on desktop */}
-              <div className="md:col-span-2 bg-gray-50 rounded-xl p-6">
-                <h3 className="text-lg font-bold text-gray-800 mb-6">
-                  Get in Touch
-                </h3>
-
-                <div className="space-y-6">
-                  <div className="flex items-start">
-                    <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mr-4">
-                      <Mail size={18} className="text-[#004aad]" />
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-semibold text-gray-700">
-                        Email
-                      </h4>
-                      <a
-                        href="mailto:hr@edzeeta.com"
-                        className="text-[#004aad] hover:underline text-sm"
-                      >
-                        hr@edzeeta.com
-                      </a>
+                    <div className="flex items-start">
+                      <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mr-4">
+                        <MapPin size={18} className="text-[#004aad]" />
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-semibold text-gray-700">
+                          Location
+                        </h4>
+                        <p className="text-gray-600 text-sm">
+                          4th Floor, Kondapur, Serilingampally Mandal, Plot no
+                          #154, Gachibowli - Miyapur Rd, opposite Harsha Toyota,
+                          Kondapur, Hyderabad, Telangana 500084
+                        </p>
+                      </div>
                     </div>
                   </div>
 
-                  <div className="flex items-start">
-                    <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mr-4">
-                      <Phone size={18} className="text-[#004aad]" />
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-semibold text-gray-700">
-                        Phone
-                      </h4>
-                      <a
-                        href="tel:+918073418832"
-                        className="text-[#004aad] hover:underline text-sm"
-                      >
-                        +91-8073418832
-                      </a>
-                    </div>
+                  <div className="mt-8">
+                    <h4 className="text-sm font-semibold text-gray-700 mb-3">
+                      Office Hours
+                    </h4>
+                    <ul className="text-sm text-gray-600 space-y-1">
+                      <li>Monday - Friday: 9:00 AM - 6:00 PM</li>
+                      <li>Saturday: 10:00 AM - 2:00 PM</li>
+                      <li>Sunday: Closed</li>
+                    </ul>
                   </div>
-
-                  <div className="flex items-start">
-                    <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mr-4">
-                      <MapPin size={18} className="text-[#004aad]" />
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-semibold text-gray-700">
-                        Location
-                      </h4>
-                      <p className="text-gray-600 text-sm">
-                        4th Floor, Kondapur, Serilingampally Mandal, Plot no
-                        #154, Gachibowli - Miyapur Rd, opposite Harsha Toyota,
-                        Kondapur, Hyderabad, Telangana 500084
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mt-8">
-                  <h4 className="text-sm font-semibold text-gray-700 mb-3">
-                    Office Hours
-                  </h4>
-                  <ul className="text-sm text-gray-600 space-y-1">
-                    <li>Monday - Friday: 9:00 AM - 6:00 PM</li>
-                    <li>Saturday: 10:00 AM - 2:00 PM</li>
-                    <li>Sunday: Closed</li>
-                  </ul>
                 </div>
               </div>
             </div>

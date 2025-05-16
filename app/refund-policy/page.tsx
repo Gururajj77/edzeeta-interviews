@@ -40,8 +40,8 @@ export default function RefundPolicy() {
             <li className="mb-4">
               <strong>Exceptional Circumstances:</strong> We understand that
               exceptional circumstances may arise. In such cases, please contact
-              our support team at support@edzeeta.com to discuss your situation.
-              We will review each case on an individual basis and work towards a
+              our support team at hr@edzeeta.com to discuss your situation. We
+              will review each case on an individual basis and work towards a
               suitable solution.
             </li>
 
@@ -75,7 +75,7 @@ export default function RefundPolicy() {
 
           <p className="text-gray-600 mb-8">
             For any refund-related inquiries or requests, please contact our
-            support team at support@edzeeta.com. We are here to assist you and
+            support team at hr@edzeeta.com. We are here to assist you and
             address any concerns you may have.
           </p>
 
@@ -115,7 +115,7 @@ export default function RefundPolicy() {
             Please be aware that we do not provide cash refunds under any
             circumstances. If you have any questions or concerns regarding your
             refund, please do not hesitate to contact our customer support team
-            for assistance at support@edzeeta.com.
+            for assistance at hr@edzeeta.com.
           </p>
 
           <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">
@@ -154,8 +154,8 @@ export default function RefundPolicy() {
           </h2>
           <ul className="list-disc pl-6 mb-8 text-gray-600">
             <li className="mb-2">
-              Contact EdZeeta at support@edzeeta.com to initiate your course
-              change request.
+              Contact EdZeeta at hr@edzeeta.com to initiate your course change
+              request.
             </li>
 
             <li className="mb-2">
@@ -166,7 +166,7 @@ export default function RefundPolicy() {
             <li className="mb-2">
               If there is a difference in course costs (if applicable), make the
               necessary payment and submit the payment receipt to
-              support@edzeeta.com.
+              hr@edzeeta.com.
             </li>
 
             <li className="mb-2">
@@ -236,8 +236,8 @@ export default function RefundPolicy() {
           </h3>
           <ul className="list-disc pl-6 mb-8 text-gray-600">
             <li className="mb-2">
-              Contact EdZeeta at support@edzeeta.com with your course
-              rescheduling request.
+              Contact EdZeeta at hr@edzeeta.com with your course rescheduling
+              request.
             </li>
 
             <li className="mb-2">
@@ -248,7 +248,7 @@ export default function RefundPolicy() {
             <li className="mb-2">
               If there is a difference in course costs (if applicable), make the
               necessary payment and submit the payment receipt to
-              support@edzeeta.com.
+              hr@edzeeta.com.
             </li>
 
             <li className="mb-2">

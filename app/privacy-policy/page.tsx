@@ -222,7 +222,7 @@ export default function PrivacyPolicy() {
           </p>
           <p className="text-gray-600 mb-2">Address: Bangalore, India</p>
           <p className="text-gray-600 mb-2">Phone: +91-8073418832</p>
-          <p className="text-gray-600 mb-6">Email: support@edzeeta.com</p>
+          <p className="text-gray-600 mb-6">Email: hr@edzeeta.com</p>
 
           <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">
             APPLICABLE LAW AND JURISDICTION

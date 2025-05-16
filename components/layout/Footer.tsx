@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Facebook, Twitter, Instagram, Mail, Phone } from "lucide-react";
+import { Mail, Phone, MapPin } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -82,34 +82,28 @@ export default function Footer() {
           </div>
           <div>
             <h4 className="font-semibold mb-4">Contact</h4>
-            <ul className="space-y-2">
-              <li className="flex items-center space-x-2">
-                <Mail size={16} className="text-[#004aad]" />
-                <span className="text-[#004aad]">opportunities@edzeeta.in</span>
+            <ul className="space-y-3">
+              <li className="flex items-start space-x-2">
+                <Mail size={16} className="text-[#004aad] mt-1 flex-shrink-0" />
+                <span className="text-[#004aad]">hr@edzeeta.com</span>
               </li>
-              <li className="flex items-center space-x-2">
-                <Phone size={16} className="text-[#004aad]" />
+              <li className="flex items-start space-x-2">
+                <Phone
+                  size={16}
+                  className="text-[#004aad] mt-1 flex-shrink-0"
+                />
                 <span className="text-[#004aad]">+91-8073418832</span>
               </li>
-              <li className="flex space-x-4 mt-4">
-                <a
-                  href="#"
-                  className="text-[#004aad] hover:text-white transition-colors"
-                >
-                  <Facebook size={20} />
-                </a>
-                <a
-                  href="#"
-                  className="text-[#004aad] hover:text-white transition-colors"
-                >
-                  <Twitter size={20} />
-                </a>
-                <a
-                  href="#"
-                  className="text-[#004aad] hover:text-white transition-colors"
-                >
-                  <Instagram size={20} />
-                </a>
+              <li className="flex items-start space-x-2">
+                <MapPin
+                  size={16}
+                  className="text-[#004aad] mt-1 flex-shrink-0"
+                />
+                <span className="text-[#004aad] text-sm">
+                  4th Floor, Kondapur, Serilingampally Mandal, Plot no #154,
+                  Gachibowli - Miyapur Rd, opposite Harsha Toyota, Kondapur,
+                  Hyderabad, Telangana 500084
+                </span>
               </li>
             </ul>
           </div>
