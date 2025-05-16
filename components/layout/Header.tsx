@@ -3,6 +3,7 @@
 import { useState, useEffect, MouseEvent } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 
@@ -58,14 +59,16 @@ export default function Header() {
     >
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center">
-          <Image
-            src="/EdzeetaLogo.svg"
-            alt="Edzeeta Logo"
-            width={100}
-            height={30}
-            className="w-20 sm:w-24 md:w-28"
-            priority
-          />
+          <Link href="/">
+            <Image
+              src="/EdzeetaLogo.svg"
+              alt="Edzeeta Logo"
+              width={100}
+              height={30}
+              className="w-20 sm:w-24 md:w-28 cursor-pointer"
+              priority
+            />
+          </Link>
         </div>
 
         {/* Mobile menu button */}
