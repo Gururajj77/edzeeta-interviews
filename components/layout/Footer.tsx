@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { Facebook, Twitter, Instagram, Mail, Phone } from "lucide-react";
 
 export default function Footer() {
@@ -114,9 +115,29 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-12 pt-8 border-t border-blue-400/30 text-center">
-          <p className="text-[#004aad]">
+          <p className="text-[#004aad] mb-4">
             © {new Date().getFullYear()} Edzeeta. All rights reserved.
           </p>
+          <div className="flex justify-center space-x-6 text-sm">
+            <Link
+              href="/privacy-policy"
+              className="text-[#004aad] hover:underline"
+            >
+              Privacy Policy
+            </Link>
+            <Link
+              href="/refund-policy"
+              className="text-[#004aad] hover:underline"
+            >
+              Refund Policy
+            </Link>
+            <Link
+              href="/terms-conditions"
+              className="text-[#004aad] hover:underline"
+            >
+              Terms & Conditions
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
