@@ -12,6 +12,7 @@ import {
   Cloud,
   Cpu,
   BarChart,
+  Heart,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -70,7 +71,15 @@ export default function InternshipTrainingsSection() {
         "Human Resource",
         "Finance",
         "Digital Marketing",
+      ],
+    },
+    {
+      name: "Healthcare and Life Sciences",
+      icon: Heart,
+      color: "pink",
+      trainings: [
         "Clinical Research & Clinical Trials with Pharmacovigilance",
+        "Medical Coding",
       ],
     },
   ];
@@ -239,7 +248,7 @@ export default function InternshipTrainingsSection() {
           </div>
           <div className="flex flex-wrap gap-2">
             <Badge variant="secondary" className="bg-blue-50 text-[#004aad] hover:bg-blue-100">
-              18 Programs
+              19 Programs
             </Badge>
             <Badge variant="secondary" className="bg-green-50 text-green-700 hover:bg-green-100">
               Industry Certified

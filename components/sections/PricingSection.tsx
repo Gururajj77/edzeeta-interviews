@@ -78,7 +78,7 @@ export default function PricingSection() {
     {
       title: "Complete Package",
       subtitle: "Comprehensive career support",
-      price: "₹2,999",
+      price: "₹4,999",
       buttonText: "Get Started",
       buttonId: "checkout-premium",
       popular: false,
@@ -86,11 +86,15 @@ export default function PricingSection() {
         { text: "2 mock interview session (45 min each)", included: true },
         { text: "Industry-specific questions", included: true },
         { text: "Detailed assessment report", included: true },
-        { text: "Growth areas document", included: true },
         { text: "Complete resume review & optimization", included: true },
         {
           text: "LinkedIn profile optimization",
           included: true,
+        },
+        {
+          text: "Internship training",
+          included: true,
+          highlight: true,
         },
         {
           text: "Job portal access",
