@@ -10,12 +10,8 @@ import {
   Code,
   Database,
   Cloud,
-  Smartphone,
   Cpu,
   BarChart,
-  DollarSign,
-  Megaphone,
-  Heart
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
